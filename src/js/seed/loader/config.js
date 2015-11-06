@@ -16,6 +16,17 @@
         }
         return name;
     }
+
+    function waitLoader(){
+        var oHead = document.getElementsByTagName('HEAD').item(0);
+        var oScript= document.createElement("script");
+        oScript.type = "text/javascript";
+        oScript.src="src/js/" + addIndexAndRemoveJsExtFromName(filepath)+".js?t="+new Date().valueOf();
+        oHead.appendChild( oScript);
+        oScript.onload=function(){
+
+        }
+    }
     /*
     * 模块引入的方式，可以任意修改js引入模式
     * modules.js挂载modules方法。S.config('modules', c);中的c方法
@@ -25,15 +36,7 @@
             _.forEach(modules, function(n, key) {
                 _.map(n.requires,function(filepath){
                     if(debug){
-                        var oHead = document.getElementsByTagName('HEAD').item(0);
 
-                        var oScript= document.createElement("script");
-
-                        oScript.type = "text/javascript";
-
-                        oScript.src="src/js/" + addIndexAndRemoveJsExtFromName(filepath)+".js?t="+new Date().valueOf();
-
-                        oHead.appendChild( oScript);
                     }else{
                         //require(filepath);
                         console.log("require引入js，"+addIndexAndRemoveJsExtFromName(filepath));
