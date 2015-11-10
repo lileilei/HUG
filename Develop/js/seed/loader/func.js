@@ -5,6 +5,7 @@
     var readyList = [];//把需要执行的方法先暂存在这个数组里
     var timer;//定时器句柄
 
+    //文档加载完毕后事件
     _.mixin(S, {
         ready: function (fn) {
             if (isReady)
