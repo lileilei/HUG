@@ -1,10 +1,3 @@
-HUG.add('button/button',function(S,color){
-    var _ = S.lodash;
-    _.mixin(S,{
-        button:function(){
-            document.getElementById("ready").addEventListener("click",function(){
-                alert(color.red);
-            });
-        }
-    });
-},{requires:['color/color']});
+HUG.add('button/button',function(S,a,b){
+    return a + "     " +b ;
+},{requires:['seed/widget','base']});

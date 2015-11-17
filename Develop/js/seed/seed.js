@@ -6,15 +6,14 @@
 var HUG =(function(_){
     var S = {
         version:"1.0.0",
-        DEBUG:true,
         modules:[],//写在add 方法中
         Config:{
             fns:{}
         },
         base:{
             path:"Develop/js/" //组件开发模式
-           // path:"src/js/"  //项目开发
-            //path:"product/js/"  //产品
+            //path:"src/js/"  //项目开发
+            //path:"build/js/"  //产品
         },
         lodash:_
     };

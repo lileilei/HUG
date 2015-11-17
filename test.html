@@ -3,21 +3,147 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>借款组件开发环境</title>
+
+    <script type="text/javascript">
+//        var number = "123abc";
+//        number =parseInt(number,10);
+//        alert(number);
+//        var a =1;
+//    (function(a){
+//
+//        alert(a);
+//        var a= 2;
+//    })(a);
+//var n = Number("12aaa3");
+//console.log(n);
+//        var data =[5,10,15,20];
+//        for(var i in data){
+//            console.log('start:'+i);
+//            setTimeout(function(){
+//                console.log('end:'+i);
+//            },i*500);
+//        }
+    </script>
     <script src="Develop/js/lib/lodash.min.js"></script>
     <script src="Develop/js/seed/seed.js"></script>
     <script src="Develop/js/seed/loader/func.js"></script>
-    <script src="Develop/js/seed/lang/path.js"></script>
+    <script src="Develop/js/path.js"></script>
     <script src="Develop/js/seed/loader/loader.js"></script>
     <script src="Develop/js/seed/modules.js"></script>
-    <!--<script src="Develop/js/index.js"></script>-->
+    <!--<script src="Develop/js/seed/widget.js"></script>-->
+    <script src="src/js/index.js"></script>
 
-    <script type="text/javascript">
-        HUG.use('index',function(S,index){
-            console.log(index);
-        });
-    </script>
+    <script src="Develop/js/lib/moment.min.js"></script>
+    <style type="text/css">
+        #demurrage{
+            padding: 0 15px;
+            margin: 0 auto;
+            width: 438px;
+            height: 341px;
+            background:rgba(28, 43, 58, 0.74);
+            border:1px solid #BED4EA;
+            border-radius: 5px;
+            text-align: center;
+            color: #ffffff;
+        }
+        #demurrage .yearmonth{
+            height: 40px;
+            line-height: 40px;
+        }
+        #demurrage .week{
+            height: 30px;
+            line-height: 30px;
+            background:rgba(60,77,93,0.8);
+            display: flex;
+        }
+        #demurrage .days{
+            display: flex;
+            border: 1px solid #384957;
+            border-right:0;
+            border-bottom-color:#384957;
+        }
+        #demurrage .week span,#demurrage .days div{
+            display: block;
+            float: left;
+            width: 14.285%;			   /* For old syntax, otherwise collapses. */
+            flex: 1;
+        }
+        #demurrage .days div{
+            height: 46px;
+            border: 1px solid #8F959A;
+            border-right-color:#384957;
+            border-bottom:0 ;
+            padding: 5px 8px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        #monthleft,#monthright{
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<button id="ready">我是ready后绑定事件的button</button>
+<div id="demurrage">
+    <div class="yearmonth">
+        <button id="monthleft"> < </button>
+        <span id="yyyymmdd"></span>
+        <button id="monthright"> > </button></div>
+    <div class="week">
+        <span>日</span>
+        <span>一</span>
+        <span>二</span>
+        <span>三</span>
+        <span>四</span>
+        <span>五</span>
+        <span>六</span>
+    </div>
+    <div id="monthdays">
+
+    </div>
+</div>
 </body>
+<script type="text/javascript">
+
+    var dayarr;
+    function getHtml(time){
+        dayarr =[];
+//        var day = moment().get('date'); //今天14号
+//        var firstweek = moment().subtract(day, 'days').day();//上月31号是星期6
+        var firstweek = moment(time).startOf('month').day();
+        var first =firstweek%6;//这月第一天是日期表中的索引
+        var monthdays = moment(time).endOf("month").get('date');//这个月多少天
+        for(var i=0;i<first;i++){
+            //从周日到第一天都是空白
+            dayarr.push('<div></div>');
+        }
+        for(var j=1;j<=monthdays;j++){
+            dayarr.push('<div>'+j+'</div>');
+        }
+        var nextmonthdays = 35-dayarr.length;
+        for(var k=1;k<=nextmonthdays;k++){
+            dayarr.push('<div>'+k+'</div>');
+        }
+        return dayarr;
+    }
+
+    var datetext = moment();
+    function drawdate(date){
+        var HTML = getHtml(date.format('YYYY-MM-DD'));
+        var innerH = "";
+        for(var m=0;m<5;m++){
+            innerH+='<div class="days">'+HTML.slice(m*7,(m+1)*7).join(' ')+'</div>';
+        }
+        document.getElementById('yyyymmdd').innerHTML=datetext.format('YYYY年 - MM月');
+        document.getElementById('monthdays').innerHTML=innerH;
+    }
+    drawdate(datetext);
+    document.getElementById('monthright').addEventListener('click',function(){
+        datetext=datetext.add(1, 'M');
+        drawdate(datetext);
+    });
+    document.getElementById('monthleft').addEventListener('click',function(){
+        datetext=datetext.subtract(1, 'M');
+        drawdate(datetext);
+    })
+</script>
 </html>

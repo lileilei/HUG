@@ -1,7 +1,4 @@
-(function(S){
-    var _ = S.lodash;
-    _.mixin(S,{
-
-    });
-    S.modules['seed/widget']= {test:'test'};
-})(HUG);
+HUG.add('seed/widget',function(){
+    return "hello widget";
+    //todo:基类
+});
