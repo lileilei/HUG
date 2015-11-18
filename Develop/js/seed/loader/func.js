@@ -1,4 +1,5 @@
-;(function (S) {
+;
+(function (S) {
     var _ = S.lodash;
     var isReady = false; //判断onDOMReady方法是否已经被执行过
     var readyList = [];//把需要执行的方法先暂存在这个数组里
@@ -14,6 +15,13 @@
                     return fn.call(this);
                 });
             return this;
+        },
+        extend: function (Child, Parent) {
+            var F = function () {};
+            F.prototype = Parent.prototype;
+            Child.prototype = new F();
+            Child.prototype.constructor = Child;
+            Child.uber = Parent.prototype;
         }
     });
     var onDOMReady = function () {

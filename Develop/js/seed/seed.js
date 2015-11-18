@@ -1,6 +1,6 @@
 /**
  * Created by alei on 2015/10/15.
- * @params: _ = lodash.js 牛逼的方法
+ * @params: _ = lodash.js 牛逼的方法 后期使用自己的lang
  */
 
 var HUG =(function(_){
@@ -11,9 +11,7 @@ var HUG =(function(_){
             fns:{}
         },
         base:{
-            path:"Develop/js/" //组件开发模式
-            //path:"src/js/"  //项目开发
-            //path:"build/js/"  //产品
+
         },
         lodash:_
     };

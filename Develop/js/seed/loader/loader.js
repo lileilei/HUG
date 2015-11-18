@@ -16,7 +16,7 @@
         loadedModule = {};//所有模块
 
     var createScript = function (filepath) {
-        if (loadedModule[filepath]['status']==0) {
+        if (loadedModule[filepath]['status'] == 0) {
             var W3C = document.dispatchEvent; //w3c事件模型
             var oHead = document.getElementsByTagName('HEAD').item(0);
             var oScript = document.createElement("script");
@@ -25,7 +25,6 @@
             oHead.appendChild(oScript);
             oScript[W3C ? "onload" : "onreadystatechange"] = function () {
                 if (W3C || /loaded|complete/i.test(oScript.readyState)) {
-                    console.log(loadedModule[filepath]);
                     checkFail();
                 }
             };
@@ -34,12 +33,13 @@
 
     //检测Notloadmodule 未加载完成模块
     function checkFail() {
-        console.log(loadedModule);
-        if (JSON.stringify(Notloadmodule) == "{}") {
+        var loading = _.min(loadedModule, 'status');
+        if (loading.status == 1) {
             _.forEach(useModule, function (usemod, key) {
-                eval(combineReqs(key, useModule[key].reqs));
+                eval('('+combineReqs(key, useModule[key].reqs)+')');
             });
         }
+
     }
 
     //递归组装use 引用模块和所有依赖的
@@ -66,17 +66,16 @@
         moduleCache[modName] = {reqs: reqs, fn: func};
         loadedModule[modName] = {
             "src": S.getBasePath() + modName, //用户测试打印路径
-            "status":1
+            "status": 1
         };
-        console.log(loadedModule);
         //modName 已加载
         _.each(reqs, function (mod) {
-            if(!loadedModule[mod]){
+            if (!loadedModule[mod]) {
                 loadedModule[mod] = {
-                    "status":0
+                    "status": 0
                 };// 等待加载...的模块
+                createScript(mod);
             }
-            createScript(mod);
         });
     };
     //add 模块加载完毕后并
@@ -88,9 +87,9 @@
             fn: func
         };
         _.each(reqs, function (mod) {
-            if(!loadedModule[mod]){
+            if (!loadedModule[mod]) {
                 loadedModule[mod] = {
-                    "status":0
+                    "status": 0
                 };// 等待加载...的模块
             }
             createScript(mod);
@@ -139,16 +138,12 @@
     configFns.modules = function (modules) {
         if (modules) {
             _.forEach(modules, function (n, mod) {
-                Notloadmodule[mod] = false;
-                loadedModule[mod] = true;
-                createScript(mod, function () {
-                    delete Notloadmodule[mod];
-                    if (JSON.stringify(Notloadmodule) == "{}") {
-                        _.forEach(useModule, function (usemod, key) {
-                            eval('useModule["' + key + '"].fn(S,' + combineReqs(key, moduleCache[key].reqs) + ')');
-                        });
-                    }
-                });
+                if (!loadedModule[mod]) {
+                    loadedModule[mod] = {
+                        "status": 0
+                    };// 等待加载...的模块
+                    createScript(mod);
+                }
             });
         }
     };
