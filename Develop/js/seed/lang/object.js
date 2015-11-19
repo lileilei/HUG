@@ -1,17 +1,10 @@
-(function(S,underfine){
+var _ = (function(underfine){
+    var obj={};
 
 
-    mix(S,{
-       mixin:function(s,o){
+    obj.forEach=function(){
 
-       }
-    });
+    };
 
-
-
-    function mix(r, s) {
-        for (var i in s) {
-            r[i] = s[i];
-        }
-    }
-})(HUG);
+    return obj;
+})();
