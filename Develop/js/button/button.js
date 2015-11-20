@@ -2,11 +2,24 @@ HUG.add('button/button', function (S,b) {
     var btn = S.widget('HUG.button',{
         options:{
             color:'red',
-            size:'30px'
+            height:'30px',
+            width:'100px',
+            background:'yellow'
         },
         _create:function(){
-            alert(this.element);
-            alert("_create   默认颜色为："+this.options.color);
+            //var child = React.createElement('button', null, 'Text Content');
+            //var root = React.createElement('div', { className: 'button-base' }, child);
+            //React.render(root, document.body);
+
+            this.element.style.color=this.options.color;
+            this.element.style.height=this.options.height;
+            this.element.style.width=this.options.width;
+            this.element.style.background=this.options.background;
+
+            //React.render(
+            //<h1>Hello, world!</h1>,
+            //    document.getElementById('example')
+            //);
         }
     });
     return btn;

@@ -1,0 +1,128 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'react-tools' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose install initial load of C:\Users\sks\AppData\Roaming\npm\package.json
+5 verbose readDependencies loading dependencies from C:\Users\sks\AppData\Roaming\npm\package.json
+6 silly cache add args [ 'react-tools', null ]
+7 verbose cache add spec react-tools
+8 silly cache add parsed spec { raw: 'react-tools',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'react-tools',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: '*',
+8 silly cache add   type: 'range' }
+9 silly addNamed react-tools@*
+10 verbose addNamed "*" is a valid semver range for react-tools
+11 silly addNameRange { name: 'react-tools', range: '*', hasData: false }
+12 silly mapToRegistry name react-tools
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/react-tools
+16 verbose addNameRange registry:https://registry.npmjs.org/react-tools not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/react-tools
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 14:22:18
+20 verbose request id 9c8957a4c8cc1966
+21 http request GET https://registry.npmjs.org/react-tools
+22 info retry will retry, error on last attempt: Error: socket hang up
+23 info attempt registry request try #2 at 14:23:32
+24 http request GET https://registry.npmjs.org/react-tools
+25 info retry will retry, error on last attempt: Error: socket hang up
+26 info attempt registry request try #3 at 14:25:36
+27 http request GET https://registry.npmjs.org/react-tools
+28 http 200 https://registry.npmjs.org/react-tools
+29 silly get cb [ 200,
+29 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+29 silly get     etag: '"AC3QT29H8MOS33TD1LE1AKZP0"',
+29 silly get     'content-type': 'application/json',
+29 silly get     'cache-control': 'max-age=60',
+29 silly get     'content-length': '80805',
+29 silly get     'accept-ranges': 'bytes',
+29 silly get     date: 'Fri, 20 Nov 2015 06:25:43 GMT',
+29 silly get     via: '1.1 varnish',
+29 silly get     age: '0',
+29 silly get     connection: 'keep-alive',
+29 silly get     'x-served-by': 'cache-lhr6329-LHR',
+29 silly get     'x-cache': 'MISS',
+29 silly get     'x-cache-hits': '0',
+29 silly get     'x-timer': 'S1448000743.304949,VS0,VE636',
+29 silly get     vary: 'Accept' } ]
+30 verbose get saving react-tools to C:\Users\sks\AppData\Roaming\npm-cache\registry.npmjs.org\react-tools\.cache.json
+31 silly addNameRange number 2 { name: 'react-tools', range: '*', hasData: true }
+32 silly addNameRange versions [ 'react-tools',
+32 silly addNameRange   [ '0.3.0',
+32 silly addNameRange     '0.3.1',
+32 silly addNameRange     '0.3.2',
+32 silly addNameRange     '0.3.3',
+32 silly addNameRange     '0.4.0',
+32 silly addNameRange     '0.4.1',
+32 silly addNameRange     '0.5.0',
+32 silly addNameRange     '0.5.1',
+32 silly addNameRange     '0.4.2',
+32 silly addNameRange     '0.5.2',
+32 silly addNameRange     '0.8.0',
+32 silly addNameRange     '0.9.0-rc1',
+32 silly addNameRange     '0.9.0',
+32 silly addNameRange     '0.10.0-rc1',
+32 silly addNameRange     '0.10.0',
+32 silly addNameRange     '0.11.0-rc1',
+32 silly addNameRange     '0.11.0',
+32 silly addNameRange     '0.11.1',
+32 silly addNameRange     '0.11.2',
+32 silly addNameRange     '0.12.0-rc1',
+32 silly addNameRange     '0.12.0',
+32 silly addNameRange     '0.12.1',
+32 silly addNameRange     '0.12.2',
+32 silly addNameRange     '0.13.0-alpha.1',
+32 silly addNameRange     '0.13.0-alpha.2',
+32 silly addNameRange     '0.13.0-beta.1',
+32 silly addNameRange     '0.13.0-beta.2',
+32 silly addNameRange     '0.13.0-rc1',
+32 silly addNameRange     '0.13.0-rc2',
+32 silly addNameRange     '0.13.0',
+32 silly addNameRange     '0.13.1',
+32 silly addNameRange     '0.13.2',
+32 silly addNameRange     '0.13.3',
+32 silly addNameRange     '0.14.0-alpha1',
+32 silly addNameRange     '0.14.0-alpha2',
+32 silly addNameRange     '0.14.0-alpha3' ] ]
+33 silly addNamed react-tools@0.13.3
+34 verbose addNamed "0.13.3" is a plain semver version for react-tools
+35 silly mapToRegistry name react-tools
+36 silly mapToRegistry using default registry
+37 silly mapToRegistry registry https://registry.npmjs.org/
+38 silly mapToRegistry uri https://registry.npmjs.org/react-tools
+39 verbose addRemoteTarball https://registry.npmjs.org/react-tools/-/react-tools-0.13.3.tgz not in flight; adding
+40 verbose addRemoteTarball [ 'https://registry.npmjs.org/react-tools/-/react-tools-0.13.3.tgz',
+40 verbose addRemoteTarball   'da6ac7d4d7777a59a5e951cf46e72fd4b6b40a2c' ]
+41 info retry fetch attempt 1 at 14:25:50
+42 info attempt registry request try #1 at 14:25:50
+43 http fetch GET https://registry.npmjs.org/react-tools/-/react-tools-0.13.3.tgz
+44 http fetch 200 https://registry.npmjs.org/react-tools/-/react-tools-0.13.3.tgz
+45 silly fetchAndShaCheck shasum da6ac7d4d7777a59a5e951cf46e72fd4b6b40a2c
+46 verbose stack Error: shasum check failed for C:\Users\sks\AppData\Local\Temp\npm-8168-4262739b\registry.npmjs.org\react-tools\-\react-tools-0.13.3.tgz
+46 verbose stack Expected: da6ac7d4d7777a59a5e951cf46e72fd4b6b40a2c
+46 verbose stack Actual:   8787e81a8b58c785cab1a1cef12a1b240cad7eaa
+46 verbose stack From:     https://registry.npmjs.org/react-tools/-/react-tools-0.13.3.tgz
+46 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\sha\index.js:38:8
+46 verbose stack     at ReadStream.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\sha\index.js:85:7)
+46 verbose stack     at ReadStream.emit (events.js:129:20)
+46 verbose stack     at _stream_readable.js:908:16
+46 verbose stack     at process._tickCallback (node.js:355:11)
+47 verbose cwd D:\HUG
+48 error Windows_NT 6.1.7601
+49 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "react-tools"
+50 error node v0.12.7
+51 error npm  v2.11.3
+52 error shasum check failed for C:\Users\sks\AppData\Local\Temp\npm-8168-4262739b\registry.npmjs.org\react-tools\-\react-tools-0.13.3.tgz
+52 error Expected: da6ac7d4d7777a59a5e951cf46e72fd4b6b40a2c
+52 error Actual:   8787e81a8b58c785cab1a1cef12a1b240cad7eaa
+52 error From:     https://registry.npmjs.org/react-tools/-/react-tools-0.13.3.tgz
+53 error If you need help, you may report this error at:
+53 error     <https://github.com/npm/npm/issues>
+54 verbose exit [ 1, true ]
