@@ -14,7 +14,36 @@
     <script src="Develop/js/lib/JSXTransformer.js"></script>
 </head>
 <body>
-<div id="container">我是button</div>
-<script src="src/js/index.js"></script>
+<div id="container">
+    componentWillMount()<br>
+    componentDidMount()<br>
+    componentWillUpdate(object nextProps, object nextState)<br>
+    componentDidUpdate(object prevProps, object prevState)<br>
+    componentWillUnmount()<br>
+    此外，React 还提供两种特殊状态的处理函数。<br>
+
+    componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用<br>
+    shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
+</div>
+<div id="example">我一直渲染透明度</div>
+
+<script type="text/jsx">
+    var LikeButton = React.createClass({
+        getInitialState: function(){
+            return {value:this.props.name};
+        },
+        handleChange: function(event) {
+            this.setState({value: event.target.value.substr(0, 10)});
+        },
+        render: function() {
+            var value = this.state.value;
+            return <input type="text" value={value} onChange={this.handleChange} />;
+        }
+    });
+    React.render(
+            <LikeButton name="alei" />,
+            document.getElementById("example")
+    );
+</script>
 </body>
 </html>

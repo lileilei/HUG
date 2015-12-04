@@ -1,0 +1,25 @@
+{
+  "name": "lilei",
+  "version": "0.0.0",
+  "description": "this is my bower",
+  "main": "components",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "lilei"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "zepto": "~1.1.6",
+    "co": "~3.0.7"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.4"
+  }
+}

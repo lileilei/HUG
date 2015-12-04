@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>react文档</title>
+    <style type="text/css">
+        pre {
+            border: 1px solid bisque;
+            background-color: #FBFBFB;
+        }
+    </style>
+</head>
+<body>
+<h3>引入react</h3>
+<pre>
+    <code>
+        &lt;script src="Develop/js/lib/react.js"&gt;&lt;/script&gt;
+        创建虚拟dom 和渲染真实dom已经分开了
+        &lt;script src="Develop/js/lib/react-dom.js"&gt;&lt;/script&gt;
+        &lt;script src="Develop/js/lib/JSXTransformer.js"&gt;&lt;/script&gt;
+    </code>
+</pre>
+<h1>创建一个虚拟DOM，来说明react的生命周期</h1>
+<pre>
+<code>
+    var VirtualDom = React.createClass({
+    getInitialState:function(){
+    //在组件挂载之前调用一次。返回值将会作为 this.state 的初始值
+    },
+    getDefaultProps:function(){},
+    propTypes:function(){},
+    mixins:function(){},
+    statics:function(){},
+    displayName:function(){},
+    /* 生命周期方法 */
+    componentWillMount:function(){//挂载 ：服务器端和客户端都只调用一次，在初始化渲染执行之前立刻调用。如果在这个方法内调用 setState，render() 将会感知到更新后的
+    state，将会执行仅一次，尽管 state 改变了。},
+
+    componentDidMount:function(){//挂载 ：在初始化渲染执行之后立刻调用一次，仅客户端有效（服务器端不会调用）},
+
+    componentWillReceiveProps:function(object nextProps){//更新 :在组件接收到新的 props 的时候调用。在初始化渲染的时候，该方法不会调用。用此函数可以作为 react 在
+    prop 传入之后， render() 渲染之前更新 state 的机会。老的 props 可以通过 this.props 获取到。在该函数中调用 this.setState() 将不会引起第二次渲染。},
+
+    shouldComponentUpdate:function(object nextProps, object nextState){//更新 ：在接收到新的 props 或者
+    state，将要渲染之前调用。该方法在初始化渲染的时候不会调用，在使用 forceUpdate 方法的时候也不会。如果确定新的 props 和 state 不会导致组件更新，则此处应该 返回 false。},
+
+    componentWillUpdate:function(nextProps, nextState){//更新 ：在接收到新的 props 或者 state
+    之前立刻调用。在初始化渲染的时候该方法不会被调用。使用该方法做一些更新之前的准备工作},
+
+    componentDidUpdate:function(object prevProps, object prevState){//更新 ：在组件的更新已经同步到 DOM
+    中之后立刻被调用。该方法不会在初始化渲染的时候调用。使用该方法可以在组件更新之后操作 DOM 元素。},
+
+    componentWillUnmount :function(object prevProps, object prevState){//移除 ：在组件从 DOM 中移除的时候立刻被调用},
+
+    render: function() {
+    //创建一个dom
+    return (
+    //创建的根Dom 还不能有兄弟
+    <div>
+        //所以所有东西只能包括在这里面
+    </div>
+    //在生命周期中就可以获取div
+    //老：this.getDOMNode()
+    //新：ReactDOM.findDOMNode(this)
+    );
+    }
+    });
+</code>
+    </pre>
+<h3>渲染真实DOM</h3>
+<code>
+    ReactDOM.render(
+    <VirtualDom items={items}/>,
+        document.getElementById("main")
+        );
+</code>
+</body>
+</html>
