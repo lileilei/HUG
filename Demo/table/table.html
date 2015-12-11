@@ -1,0 +1,411 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <script src="../jquery.js"></script>
+    <script src="../tmpl.js"></script>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        .datagrid td {
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        .datagrid td {
+            border-right: 1px solid #d2d2d2;
+            border-bottom: 1px solid #d2d2d2;
+            overflow: hidden;
+            _text-overflow: ellipsis;
+            padding: 0;
+        }
+
+        .zz-table-head {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            background-color: #46596a;
+        }
+
+        .datagrid {
+            position: relative;
+            text-align: left;
+            table-layout: fixed;
+            display: table;
+            width: 100%;
+            height: 1px;
+            z-index: 100;
+            font-size: 14px;
+        }
+
+        .datagrid td > div, .datagrid td {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            word-break: keep-all;
+        }
+
+        .zz-table-head td, .zz-table-fluid td {
+            line-height: 30px;
+        }
+
+        .zz-grid-topRightCell {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20000px;
+            height: 100%;
+            z-index: 9;
+            margin-left: -2px;
+            margin-top: -1px;
+            _top: auto;
+            _bottom: -1px;
+        }
+
+        .zz-panel-body {
+            position: relative;
+            overflow: auto;
+            height: 160px;
+            width: 100%;
+        }
+
+        .zz-table-fluid {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+        }
+
+        .zz-table-head .datagrid {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .zz-table-fluid td > div {
+            padding: 2px;
+            position: relative;
+        }
+
+        .zz-table-fluid tr:nth-of-type(even) {
+            background-color: #ebf2fc;
+        }
+
+        .zz-grid-headerCell-outer {
+            position: relative;
+            padding-left: 4px;
+            padding-right: 2px;
+        }
+
+        .zz-grid-column-splitter {
+            position: absolute;
+            overflow: hidden;
+            background: white;
+            cursor: e-resize;
+            opacity: .0;
+            -moz-opacity: .0;
+            filter: alpha(opacity=0);
+            z-index: 100;
+            top: 0px;
+            right: -3px;
+            height: 100%;
+            width: 5px;
+        }
+
+        .zz-grid-proxy {
+            position: absolute;
+            overflow: hidden;
+            background: gray;
+            opacity: .30;
+            -moz-opacity: .30;
+            filter: alpha(opacity=30);
+            border: solid 1px black;
+            z-index: 100000000;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+
+        }
+    </style>
+    <script language=javascript>
+
+    </script>
+    <style type="text/css">
+        .col-1, .col-2, .col-3 {
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="datagrid" style="width: 620px; border: 1px solid #99bce8; margin: 0 auto; overflow: hidden;">
+    <div id="zz-table-head" class="zz-table-head">
+        <table class="datagrid" cellspacing="0" cellpadding="0" border="0">
+            <tr style="height: 0">
+                <td class="col-1"></td>
+                <td class="col-2"></td>
+                <td class="col-3"></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="zz-grid-headerCell-outer">
+                        <div class="zz-grid-title">
+                            列1
+                        </div>
+                        <div id="1" class="zz-grid-column-splitter"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="zz-grid-headerCell-outer">
+                        <div class="zz-grid-title">
+                            列2
+                        </div>
+                        <div id="2" class="zz-grid-column-splitter"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="zz-grid-headerCell-outer">
+                        <div class="zz-grid-title">
+                            列3
+                        </div>
+                        <div id="3" class="zz-grid-column-splitter"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="zz-grid-topRightCell"></div>
+    </div>
+    <div class="zz-panel-body">
+        <div id="zz-table-fluid" class="zz-table-fluid">
+            <table class="datagrid" cellspacing="0" cellpadding="0" border="0">
+                <tr style="height: 0">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                    <td>
+                        <div>拖动表列改变table的列宽度</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var data=[{
+        id:'1',
+        name:'alei',
+        age:'18'
+    },{
+        id:'2',
+        name:'alei2',
+        age:'19'
+    }];
+    (function($){
+        var GUID=1;
+        var tmpl = template;
+        var titletmpl = '<div  class="zz-table-head">' +
+                '<table class="datagrid" cellspacing="0" cellpadding="0" border="0">' +
+                '<tr style="height: 0;">' +
+                '<%for(var i=0,len=column.length;i<len;i++){%>' +
+                '<td style="width:<%=column[i].width%>"></td>' +
+                '<%}%>' +
+                '</tr>' +
+                '<tr>' +
+                '<%for(var j=0,len=column.length;j<len;j++){%>' +
+                '<td><div class="zz-grid-headerCell-outer"> <div class="zz-grid-title">' +
+                '<%=column[j].title%>' +
+                '</div><div id="1" class="zz-grid-column-splitter"></div></div></td>' +
+                '<%}%>' +
+                '</tr>' +
+                '</table><div class="zz-grid-topRightCell"></div></div>';
+
+        $.fn.datagrid = function (opts) {
+            var self = this,
+                    queryParams = $.extend({
+                        page: 1,
+                        rows: 20
+                    }, opts.queryParams || {});
+            var zz_table_head = $('<div  class="zz-table-head"></div>'),
+            zz_panel_body = $('<div  class="zz-panel-body"><div class="zz-table-fluid"></div></div>');
+            var _create=function(){
+                var data=[{
+                    id:'1',
+                    name:'alei',
+                    age:'18'
+                },{
+                    id:'2',
+                    name:'alei2',
+                    age:'19'
+                }];
+                var column=[];
+                if(opts.column){
+                    column=opts.column;
+                }else{
+                    for(var f in data[0]){
+                        column.push({
+                            title:f,
+                            field:f,
+                            width:opts.width || 0+"px"
+                        });
+                    }
+                }
+                var render = tmpl.compile(titletmpl);
+                var html = render({
+                    column: column
+                });
+                self.html(html);
+            };
+            _create();
+            var _init=function(){
+
+            };
+    var scrollEvent = function (e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        document.getElementById('zz-table-head').scrollLeft = target.scrollLeft || (target.documentElement && target.documentElement.scrollLeft);
+    };
+            var getData=function(){
+               return $.ajax({
+                    type:'POST',
+                    url:opts.url,
+                    data:queryParams,
+                    dataType:'json',
+                    error:function(a,b,c){
+                        console.log(a.status);
+                        console.log(a.readyState);
+                        console.log(b);
+                    },
+                    complete:function(){
+
+                    }
+                });
+            };
+        };
+    })(jQuery);
+    $("#datagrid").datagrid({
+
+    });
+//    var scrollEvent = function (e) {
+//        e = e || window.event;
+//        var target = e.target || e.srcElement;
+//        document.getElementById('zz-table-head').scrollLeft = target.scrollLeft || (target.documentElement && target.documentElement.scrollLeft);
+//    };
+//    var elem = document.getElementById('zz-table-fluid');
+//    var type = "scroll";
+//    if (elem.addEventListener) {
+//        elem.addEventListener(type, scrollEvent, false);
+//    } else if (elem.attachEvent) {
+//        elem.attachEvent("on" + type, scrollEvent);
+//    }
+//    function refreshCss() {
+//        var clientW = elem.clientWidth || (target.documentElement && target.documentElement.clientWidth);
+//        var scrollW = elem.scrollWidth || (target.documentElement && target.documentElement.scrollWidth);
+//        if (clientW == scrollW) {
+//            document.getElementById('zz-table-head').getElementsByTagName("table")[0].style.width = scrollW;
+//        } else {
+////            document.getElementById('zz-table-head').getElementsByTagName("table")[0].style.width="100%";
+//        }
+//    }
+//    window.onresize = function () {
+//        refreshCss();
+//    };
+//    refreshCss();
+</script>
+</body>
+</html>
